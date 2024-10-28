@@ -1,118 +1,97 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet, ImageBackground, Image, Text, TouchableOpacity } from 'react-native';
+import { BACKGROUND_ONBOARD, ICON_ONBOARD, LABEL_ONBOARD } from './assets';
+import LinearGradient from 'react-native-linear-gradient';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+function App() {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+    <ImageBackground
+      source={BACKGROUND_ONBOARD}
+      style={[styles.background]}
+      resizeMode='stretch'
+    >
+      <Text style={styles.textheader}>HƯỚNG DẪN</Text>
+      <Image
+        source={ICON_ONBOARD}
+        style={styles.icon}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <ImageBackground
+        source={LABEL_ONBOARD}
+        style={styles.label}
+      >
+        <Text style={styles.text}>
+          Lắc chắt chiu từng lượt{'\n'}
+          Nhận ngay 1 phần quà{'\n'}
+          Lắc tới bến chục lượt{'\n'}
+          Nhận một lúc 10 phần quà!
+        </Text>
+      </ImageBackground>
+      <TouchableOpacity style={styles.button}>
+        <LinearGradient colors={['#FFF613','#F37500']} style={styles.linearGradient}>
+          <Text >
+            Tham gia ngay
+          </Text>
+        </LinearGradient>
+
+      </TouchableOpacity>
+    </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  background: {
+    alignItems: 'center',
+    flex: 1
   },
-  sectionTitle: {
+  icon: {
+    width: 414,
+    height: 401,
+    top: 70,
+  },
+  label: {
+    width: 335,
+    height: 151,
+    top: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  text: {
+    height: "50%",
+    width: "70%",
+    fontSize: 16,
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'SVN-Gotham Bold',
+  },
+  textheader: {
+    top: 60,
     fontSize: 24,
-    fontWeight: '600',
+    fontFamily: 'SVN-Cookies',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  button: {
+    width: 179,
+    height: 44,
+    borderRadius: 18,
+    backgroundColor: '#FFF613',
+    borderWidth: 2,
+    borderColor: '#FFF613',
+    top: 80,
+    overflow: 'hidden', // Để bo góc cho LinearGradient
+    elevation: 3, // Chỉ dành cho Android
+    shadowColor: '#000', // Màu bóng
+    shadowOffset: {
+      width: 0, // Độ dời theo chiều ngang
+      height: 1, // Độ dời theo chiều dọc
+    },
+    shadowOpacity: 0.3, // Độ mờ của bóng
+    shadowRadius: 1,
   },
-  highlight: {
-    fontWeight: '700',
-  },
+  linearGradient: {
+    height:'100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
 });
 
 export default App;

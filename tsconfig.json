@@ -1,3 +1,19 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      // Top level alias
+      "@assets": ["assets"],
+      "@presentation": ["src/presentation"],
+      "@domain": ["src/domain"],
+      "@data": ["src/data"],
+      "@core": ["src/core"],
+      // Presentation level alias
+      "@components": ["src/presentation/component"],
+      "@containers": ["src/presentation/container"],
+      "@resources": ["src/presentation/resource"],
+      "@navigation": ["src/presentation/navigation"],
+    }
+  }
 }
